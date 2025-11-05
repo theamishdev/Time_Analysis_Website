@@ -1,4 +1,4 @@
-export const loginPageQuotes = [
+const loginPageQuotes = [
   "Every second counts. Make yours matter.",
   "Turn time into progress.",
   "Focus. Analyze. Achieve.",
@@ -10,3 +10,8 @@ export const loginPageQuotes = [
   "Work smarter, not longer.",
   "Precision in time is power in progress.",
 ];
+
+export const getRandomQuote = () => {
+  const randomIndex = Math.floor(Math.random() * loginPageQuotes.length);
+  return loginPageQuotes[randomIndex];
+};

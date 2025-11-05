@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import loginPage from "../assets/loginPage.png";
-import { loginPageQuotes } from "../constants";
+import { getRandomQuote } from "../constants";
 import { useEffect, useState } from "react";
 
 const SignUp = () => {
@@ -13,15 +13,13 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [agree, setAgree] = useState(false);
 
-  // random quote function
-  const getRandomQuote = () => {
-    const randomIndex = Math.floor(Math.random() * loginPageQuotes.length);
-    setQuote(loginPageQuotes[randomIndex]);
-  };
-
   useEffect(() => {
-    getRandomQuote();
-    const interval = setInterval(getRandomQuote, 4000);
+    let quote = getRandomQuote();
+    setQuote(quote);
+    const interval = setInterval(() => {
+      quote = getRandomQuote();
+      setQuote(quote);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
